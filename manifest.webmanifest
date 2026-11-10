@@ -1,0 +1,19 @@
+{
+  "name": "VibeFlow \u2014 Short Videos",
+  "short_name": "VibeFlow",
+  "description": "Discover and share short videos with the world.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09090d",
+  "theme_color": "#09090d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

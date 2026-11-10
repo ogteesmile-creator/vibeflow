@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="VibeFlow — discover and share short videos with the world.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <title>VibeFlow</title>
+</head>
+<body>
+  <div id="auth" class="auth-wrap">
+    <div class="brand-mark">V<span>F</span></div>
+    <h1>VibeFlow</h1><p class="muted">Your world. Your vibe.</p>
+    <form id="auth-form" class="panel">
+      <label>Email<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters"></label>
+      <button class="primary" id="login-btn">Log in</button>
+      <button class="secondary" id="signup-btn" type="button">Create account</button>
+      <button class="link-btn" id="reset-btn" type="button">Forgot password?</button>
+      <p id="auth-message" class="message" role="status"></p>
+    </form>
+    <p class="tiny muted">By continuing, you agree to our <a href="#terms">Terms</a> and <a href="#privacy">Privacy Policy</a>.</p>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="VibeFlow home">Vibe<span>Flow</span></a>
+      <div class="top-actions"><button id="install-btn" class="small-btn hidden">Install</button><button id="logout-btn" class="small-btn">Log out</button></div>
+    </header>
+    <main>
+      <section id="feed-screen" class="screen">
+        <div class="section-head"><div><h2>For you</h2><p class="muted">Fresh videos from the community</p></div><button id="refresh-feed" class="small-btn">Refresh</button></div>
+        <div id="feed" class="feed"><div class="empty">Sign in to discover videos.</div></div>
+      </section>
+      <section id="discover-screen" class="screen hidden">
+        <div class="section-head"><div><h2>Discover</h2><p class="muted">Find people and new videos</p></div></div>
+        <form id="search-form" class="search-row"><input id="search-input" placeholder="Search usernames" aria-label="Search usernames"><button class="primary">Search</button></form>
+        <div id="search-results"></div>
+      </section>
+      <section id="upload-screen" class="screen hidden">
+        <h2>Share a video</h2><p class="muted">Upload a video from your phone.</p>
+        <form id="upload-form" class="panel">
+          <label>Video file<input id="video-file" type="file" accept="video/*" required></label>
+          <label>Caption<textarea id="caption" maxlength="500" rows="3" placeholder="Add a caption..."></textarea></label>
+          <button class="primary">Post video</button><p id="upload-message" class="message"></p>
+        </form>
+      </section>
+      <section id="profile-screen" class="screen hidden">
+        <h2>Your profile</h2>
+        <div class="panel">
+          <label>Username<input id="profile-username" maxlength="30" placeholder="your_username"></label>
+          <label>Bio<textarea id="profile-bio" maxlength="160" rows="3" placeholder="Tell people about yourself"></textarea></label>
+          <button id="save-profile" class="primary">Save profile</button><p id="profile-message" class="message"></p>
+        </div>
+        <h3>Your videos</h3><div id="my-videos" class="video-grid"></div>
+      </section>
+      <section id="terms-screen" class="screen hidden legal">
+        <h2>Terms of Use</h2><p>VibeFlow is a platform for sharing and discovering user-generated videos. You are responsible for content you upload and must have the rights and permissions to share it.</p><p>Do not upload unlawful, hateful, harassing, sexually exploitative, deceptive, or otherwise harmful content. We may remove content or restrict accounts that violate these rules.</p><p>You retain ownership of your content and grant VibeFlow permission to host, display and distribute it as needed to operate the service. Use the service lawfully and respect other users.</p><p>These initial terms require review and completion with the operator's legal identity, contact details, governing law and dispute terms before public launch.</p>
+      </section>
+      <section id="privacy-screen" class="screen hidden legal">
+        <h2>Privacy Policy</h2><p>VibeFlow processes account details, profile information, uploaded videos, interactions and messages to provide the service. Data is stored using Supabase infrastructure configured by the operator.</p><p>Do not share sensitive personal information in public posts. You can request account or data deletion by contacting the service operator through the contact details published with the final app.</p><p>This starter policy is not a substitute for a complete privacy assessment. Before launch, add the operator's legal contact, retention periods, legal bases, processors, international transfer details and applicable regional rights.</p>
+      </section>
+      <section id="guidelines-screen" class="screen hidden legal">
+        <h2>Community Guidelines</h2><ul><li>Be respectful. No threats, harassment or hate.</li><li>Do not post illegal, exploitative or dangerous content.</li><li>Only share videos you own or have permission to use.</li><li>Protect minors and other people's privacy.</li><li>Report harmful content to the service operator.</li></ul><p>Before public launch, VibeFlow needs an operational reporting, blocking, moderation and appeals process.</p>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button data-screen="feed" class="active"><span>⌂</span>Home</button>
+      <button data-screen="discover"><span>⌕</span>Discover</button>
+      <button data-screen="upload"><span>＋</span>Upload</button>
+      <button data-screen="profile"><span>◉</span>Profile</button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
